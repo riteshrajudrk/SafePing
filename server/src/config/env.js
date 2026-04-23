@@ -3,14 +3,16 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
+const readEnv = (key, fallback = '') => (process.env[key] || fallback).trim();
+
 module.exports = {
-  nodeEnv: process.env.NODE_ENV || 'development',
-  port: process.env.PORT || 5000,
-  mongoUri: process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/safeping',
-  jwtSecret: process.env.JWT_SECRET || 'change-me',
-  jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
-  twilioSid: process.env.TWILIO_SID || '',
-  twilioAuthToken: process.env.TWILIO_AUTH_TOKEN || '',
-  twilioPhone: process.env.TWILIO_PHONE || '',
-  clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
+  nodeEnv: readEnv('NODE_ENV', 'development'),
+  port: readEnv('PORT', '5000'),
+  mongoUri: readEnv('MONGO_URI', 'mongodb://127.0.0.1:27017/safeping'),
+  jwtSecret: readEnv('JWT_SECRET', 'change-me'),
+  jwtExpiresIn: readEnv('JWT_EXPIRES_IN', '7d'),
+  twilioSid: readEnv('TWILIO_SID'),
+  twilioAuthToken: readEnv('TWILIO_AUTH_TOKEN'),
+  twilioPhone: readEnv('TWILIO_PHONE'),
+  clientUrl: readEnv('CLIENT_URL', 'http://localhost:5173'),
 };
