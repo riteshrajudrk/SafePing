@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 222 47% 8%;
+  --foreground: 210 40% 98%;
+  --muted: 215 28% 17%;
+  --muted-foreground: 217 20% 75%;
+  --card: 222 45% 12%;
+  --card-foreground: 210 40% 98%;
+  --border: 215 28% 22%;
+  --input: 215 28% 20%;
+  --primary: 188 92% 53%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 28 92% 61%;
+  --secondary-foreground: 20 14% 7%;
+  --ring: 188 92% 53%;
+}
+
+.light {
+  color-scheme: light;
+  --background: 210 33% 98%;
+  --foreground: 222 47% 11%;
+  --muted: 210 25% 92%;
+  --muted-foreground: 215 16% 40%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --border: 214 21% 86%;
+  --input: 210 30% 96%;
+  --primary: 197 89% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 26 98% 58%;
+  --secondary-foreground: 0 0% 100%;
+  --ring: 197 89% 48%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(18, 196, 255, 0.16), transparent 34%),
+      radial-gradient(circle at top right, rgba(255, 140, 92, 0.14), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 24%);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/10 shadow-2xl backdrop-blur-xl;
+  }
+
+  .light .glass-panel {
+    @apply border-black/5 bg-white/75;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    background-image:
+      radial-gradient(circle at top left, rgba(18, 196, 255, 0.22), transparent 42%),
+      radial-gradient(circle at 85% 16%, rgba(255, 140, 92, 0.16), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%);
+  }
+
+  .leaflet-control-attribution {
+    font-size: 9px;
+  }
+}
