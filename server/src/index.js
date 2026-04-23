@@ -27,6 +27,14 @@ app.use(
   }),
 );
 
+app.get('/', (_req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'SafePing API',
+    health: '/api/health',
+  });
+});
+
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'SafePing API' });
 });
